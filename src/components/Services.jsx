@@ -1,36 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBroom, FaMagic, FaBed, FaCouch } from 'react-icons/fa';
+import { FaBroom, FaMagic, FaHammer, FaCouch } from 'react-icons/fa';
 import './Services.css';
 
-const Services = () => {
-  const services = [
-    {
-      id: 1,
-      title: 'تنظيف شامل',
-      icon: <FaBroom />,
-      description: 'نظافة عميقة لجميع غرف المنزل، تشمل الأرضيات والجدران والأسطح المختلفة لتعود وكأنها جديدة.'
-    },
-    {
-      id: 2,
-      title: 'تلميع وتعقيم',
-      icon: <FaMagic />,
-      description: 'استخدام أحدث مواد التعقيم والتلميع الآمنة لضمان بيئة صحية خالية من الجراثيم لعائلتك.'
-    },
-    {
-      id: 3,
-      title: 'ترتيب الغرف',
-      icon: <FaBed />,
-      description: 'ترتيب أنيق ومنظم للغرف وغرف النوم مع تغيير المفروشات والاهتمام بأدق التفاصيل.'
-    },
-    {
-      id: 4,
-      title: 'تنظيف الأثاث',
-      icon: <FaCouch />,
-      description: 'تنظيف جاف وبالبخار للكنب والمجالس وإزالة البقع الصعبة مع المحافظة على جودة الأقمشة.'
-    }
-  ];
+const iconMap = {
+  1: <FaBroom />,
+  2: <FaHammer />,
+  3: <FaCouch />,
+  4: <FaMagic />
+};
 
+const Services = ({ content }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -40,36 +20,44 @@ const Services = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
   };
 
   return (
     <section id="services" className="services-section">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h2>خدماتنا المتميزة</h2>
-          <p>اكتشف باقة خدماتنا المصممة لتلبية كافة احتياجاتك</p>
+          <h2>{content.title}</h2>
+          <p>{content.description}</p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           className="services-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {services.map((service) => (
-            <motion.div key={service.id} className="service-card" variants={itemVariants}>
-              <div className="service-icon">{service.icon}</div>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
+          {content.cards.map((service) => (
+            <motion.div
+              key={service.id}
+              className="service-card"
+              variants={itemVariants}
+              style={{ backgroundImage: `url(${service.image})` }}
+            >
+              <div className="service-card-overlay"></div>
+              <div className="service-card-content">
+                <div className="service-icon">{iconMap[service.id] || <FaBroom />}</div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

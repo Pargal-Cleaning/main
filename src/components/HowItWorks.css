@@ -1,0 +1,108 @@
+.process-section {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+  background-color: var(--bg-tertiary);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.process-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.process-card::before {
+  content: '';
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.process-card:hover::before { 
+  opacity: 1; 
+}
+
+.process-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: var(--shadow-glow);
+}
+
+.process-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.process-number {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(212, 175, 55, 0.2);
+  line-height: 0.8;
+  transition: var(--transition);
+}
+
+.process-card:hover .process-number {
+  -webkit-text-stroke: 1.5px var(--primary-color);
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.process-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  background: rgba(212, 175, 55, 0.05);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: var(--transition);
+  transform: rotate(-5deg);
+}
+
+.process-card:hover .process-icon {
+  transform: rotate(0deg) scale(1.05);
+  background: var(--primary-color);
+  color: #000;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.process-title {
+  color: var(--text-light);
+  margin-bottom: 1rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  position: relative;
+  z-index: 2;
+}
+
+.process-desc {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 2;
+}

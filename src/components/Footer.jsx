@@ -2,19 +2,20 @@ import React from 'react';
 import { FaWhatsapp, FaInstagram, FaTiktok, FaFacebookF } from 'react-icons/fa';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ content }) => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="footer">
       <div className="container footer-container">
         <div className="footer-brand">
-          <img src="https://i.ibb.co/x8MRf7Z5/pargal-logo.png" alt="Pargal Cleaning Logo" className="footer-logo" />
-          <p>شريكك الموثوق لنظافة لا مثيل لها.</p>
+          <img src="https://i.ibb.co/x8MRf7Z5/pargal-logo.png" alt="Barjal Cleaning Logo" className="footer-logo" />
+          <p>{content.description}</p>
+          <p className="footer-note">{content.note}</p>
         </div>
-        
+
         <div className="footer-social">
-          <h3>تواصل معنا</h3>
+          <h3>{content.contactTitle}</h3>
           <div className="social-icons">
             <a href="https://wa.me/201270920863" target="_blank" rel="noreferrer" className="social-icon whatsapp">
               <FaWhatsapp />
@@ -32,7 +33,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; {currentYear} Pargal Cleaning. جميع الحقوق محفوظة.</p>
+        <p>&copy; {currentYear} برجل. {content.copyright}</p>
       </div>
     </footer>
   );

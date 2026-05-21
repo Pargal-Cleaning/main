@@ -1,0 +1,62 @@
+.areas-section {
+  padding: clamp(3rem, 8vw, 5rem) 0;
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at top right, rgba(212, 175, 55, 0.05), transparent 40%);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.area-card {
+  background: var(--bg-secondary);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.area-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--primary-color);
+  background: var(--bg-tertiary);
+}
+
+.area-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+}
+
+.area-card h3 {
+  font-size: 1.5rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
+
+.area-card p {
+  color: var(--text-muted);
+}
